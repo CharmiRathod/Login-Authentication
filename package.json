@@ -1,0 +1,28 @@
+{
+  "name": "login-authentication",
+  "version": "1.0.0",
+  "description": "Authentication using Hash and bcrypt",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CharmiRathod/Login-Authentication.git"
+  },
+  "author": "Charmi Rathod, Sarang Tandel, Punit Tewani",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CharmiRathod/Login-Authentication/issues"
+  },
+  "homepage": "https://github.com/CharmiRathod/Login-Authentication#readme",
+  "type": "module",
+  "dependencies": {
+    "connect-mongo": "^4.6.0",
+    "cookie-parser": "^1.4.6",
+    "express": "^4.17.3",
+    "express-session": "^1.17.2",
+    "mongoose": "^6.2.10",
+    "nodemon": "^2.0.15"
+  }
+}
