@@ -4,7 +4,8 @@
   "description": "Authentication using Hash and bcrypt",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon app.js"
   },
   "repository": {
     "type": "git",
@@ -16,13 +17,16 @@
     "url": "https://github.com/CharmiRathod/Login-Authentication/issues"
   },
   "homepage": "https://github.com/CharmiRathod/Login-Authentication#readme",
-  "type": "module",
+  
   "dependencies": {
     "connect-mongo": "^4.6.0",
     "cookie-parser": "^1.4.6",
+    "dotenv": "^16.0.0",
     "express": "^4.17.3",
     "express-session": "^1.17.2",
     "mongoose": "^6.2.10",
     "nodemon": "^2.0.15"
-  }
+  },
+  "type":"module"
+ 
 }
