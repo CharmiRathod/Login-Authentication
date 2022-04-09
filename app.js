@@ -20,7 +20,7 @@ const sessionStorage = MongoStore.create({
     autoRemove: 'native'
 })
 
-app.use("/user", web);
+app.use(express.urlencoded({extended: true}))
 
 app.use(express.json())
 
@@ -28,7 +28,7 @@ app.use(session({
     name: 'firstSession',
     secret: 'iamkey',
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: false,
     cookie: {
         maxAge: 600000,
         sameSite: false
@@ -37,8 +37,8 @@ app.use(session({
 }));
 
 app.use(cookieParser());
-app.use(express.urlencoded({extended: true}))
 
+app.use("/user", web);
 app.listen(port, () => {
     console.log(`sever is listening at http://localhost:${port}`);
 })

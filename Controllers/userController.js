@@ -11,11 +11,11 @@ class userController {
     }
 
     static createUserDoc = async (req, res) => {
-        
-        const hashPassword = await bcrypt.hash(req.session.body.Password, 10)
+        console.log(req.body.Password);
+        const hashPassword = await bcrypt.hash(req.body.Password, 10)
         try {
             console.log(req.body);
-            const {Name, Email, Password} = req.session.body;
+            const {Name, Email, Password} = req.body;
 
             const doc = new UserModel({
                 name: Name,
@@ -23,9 +23,8 @@ class userController {
                 password: hashPassword
             })
 
-            res.send("creating user data...")
             await doc.save();
-            res.send("User Data Successfully created!!!");
+            
             res.redirect('/login');
             
         } catch (error) {
@@ -39,25 +38,25 @@ class userController {
 
     static verifyLogin = async(req, res) => {
         try {
-            const {Email, Password} = req.session.body;
+            const {Email, Password} = req.body;
             const result = await UserModel.findOne({email: Email})
-            //console.log(result);
+            // console.log(result.password);
+            // console.log(Password);
 
-            const isMatch = await bcrypt.compare(Password, result.Password)
+            const isMatch = await bcrypt.compare(Password, result.password)
             if (result != null){
-                if (result.Email === Email && isMatch){
+                if (result.email === Email && isMatch){
+                    req.session.userEmail = Email;
                     res.send(`<h1>DashBoard-----${result}</h1>`)
                 }
                 else{
-                    res.send(`<h1>Email or Passwrod is invalid...!`)
+                    res.send(`<h1>Email or Password is invalid...!`)
                 }
             }
             else {
                 res.send(`<h1> You are not a registered user!</h1>`)
             }
            
-
-            res.send("Login Successfull")
         } catch (error) {
             console.log(error);
         }
