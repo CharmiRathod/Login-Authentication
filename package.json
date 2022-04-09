@@ -17,8 +17,8 @@
     "url": "https://github.com/CharmiRathod/Login-Authentication/issues"
   },
   "homepage": "https://github.com/CharmiRathod/Login-Authentication#readme",
-  
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "connect-mongo": "^4.6.0",
     "cookie-parser": "^1.4.6",
     "dotenv": "^16.0.0",
@@ -27,6 +27,5 @@
     "mongoose": "^6.2.10",
     "nodemon": "^2.0.15"
   },
-  "type":"module"
- 
+  "type": "module"
 }

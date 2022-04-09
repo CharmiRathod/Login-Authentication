@@ -4,7 +4,10 @@ const router = express.Router()
 import userController from '../Controllers/userController.js'
 
 router.get('/', userController.Home)
-router.post('/Registration', userController.Registration)
+router.get('/Registration', userController.Registration)
+router.post('/Registration', userController.createUserDoc)
 router.post('/Login', userController.Login)
+router.post('/Login', userController.verifyLogin)
+
 
 export default router;
