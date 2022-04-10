@@ -3,15 +3,15 @@ import bcrypt from 'bcrypt';
 
 class userController {
     static Home = (req, res) => {
-        res.send("Login/Registration Page");
+        res.render("index");
     }
 
     static Registration = (req, res) => {
-        res.send("Registration Page");
+        res.render("register");
     }
 
     static createUserDoc = async (req, res) => {
-        console.log(req.body.Password);
+        console.log(req.body);
         const hashPassword = await bcrypt.hash(req.body.Password, 10)
         try {
             console.log(req.body);
@@ -25,11 +25,12 @@ class userController {
 
             await doc.save();
             
-            res.redirect('/login');
+            res.render('index');
             
         } catch (error) {
             console.log(error);
         }
+
     }
 
     static Login = (req, res) => {
@@ -38,10 +39,11 @@ class userController {
 
     static verifyLogin = async(req, res) => {
         try {
+            console.log(req.body);
             const {Email, Password} = req.body;
             const result = await UserModel.findOne({email: Email})
-            // console.log(result.password);
-            // console.log(Password);
+            console.log(result.password);
+            console.log(Password);
 
             const isMatch = await bcrypt.compare(Password, result.password)
             if (result != null){
